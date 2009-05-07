@@ -1,5 +1,5 @@
 # Require our stack
-%w(essential apache scm ruby_enterprise memcached postgresql mysql).each do |r|
+%w(essential apache scm ruby_enterprise memcached postgresql mysql sphinx).each do |r|
   require File.join(File.dirname(__FILE__), 'stack', r)
 end
 
@@ -17,6 +17,7 @@ policy :passenger_stack, :roles => :app do
   requires :ruby_enterprise         # Ruby Enterprise edition
   requires :database                # MySQL or Postgres
   requires :ruby_database_driver    # mysql or postgres gems
+  requires :search_engine           # Sphinx
   requires :scm                     # Git
   requires :memcached               # Memcached
   requires :libmemcached            # Libmemcached
